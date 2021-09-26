@@ -1,4 +1,4 @@
-
+package TrabajoPracticoNro5.TrabajoPracticoNro5.src;
 
 public class InvalidEntryException extends Exception{
 	/**

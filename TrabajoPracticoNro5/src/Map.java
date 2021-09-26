@@ -1,4 +1,4 @@
-
+package TrabajoPracticoNro5.TrabajoPracticoNro5.src;
 public interface Map<K,V> {
 	/**
 	 * Retorna el numero de entradas de M
