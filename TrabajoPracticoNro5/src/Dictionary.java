@@ -1,8 +1,3 @@
-package TDADiccionario;
-
-import Excepciones.InvalidEntryException;
-import Excepciones.InvalidKeyException;
-import TDAMapeo.Entry;
 
 public interface Dictionary<K,V>
 {

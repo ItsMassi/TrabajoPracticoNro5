@@ -1,4 +1,4 @@
-package Excepciones;
+
 
 public class InvalidKeyException extends Exception{
 	/**
