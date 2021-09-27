@@ -1,59 +1,154 @@
+package TDAMapeo;
 
+import java.util.Iterator;
 
-public class MapList<K,V> implements Map<K,V> {
-	
-	protected PositionList<Entrada<K,V>> m;
-	
-	public MapList() {
+import Excepciones.InvalidKeyException;
+import Excepciones.InvalidPositionException;
+import TDALista.ListaDE;
+import TDALista.Position;
+import TDALista.PositionList;
+
+public class MapeoConLista<K,V> implements Map<K,V> {
+	private class Entrada<K,V> implements Entry<K,V> {
+		private K key;
+		private V value;
 		
+		public Entrada(K k, V v) {
+			key = k;
+			value = v;
+		}
+		public K getKey() {
+			return key;
+		}
+		public void setKey(K k) {
+			key = k;
+		}
+		public V getValue() {
+			return value;
+		}
+		public void setValue(V v) {
+			value = v;  
+		}
+		public String toString() {
+			return "(" + key.toString() + ", " + value.toString() + ")";
+ 		}
 	}
 	
-	@Override
+	protected PositionList<Entrada<K, V>> m;
+
+	public MapeoConLista() {
+		m = new ListaDE<Entrada<K,V>>();
+	}
+	
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return m.size();
 	}
 
-	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return m.isEmpty();
 	}
 
-	@Override
-	public V get(K key) {
-		// TODO Auto-generated method stub
-		return null;
+	public V get(K key) throws InvalidKeyException {
+		if(key == null) {
+			throw new InvalidKeyException("se escribio una Key invalida");
+		}
+		
+		Iterator<Position<Entrada<K, V>>> it = m.positions().iterator();
+		Position<Entrada<K, V>> p;
+		
+		V retorno = null;
+		
+		while(it.hasNext() && retorno == null) {
+			p = it.next();
+			
+			if(p.element().getKey().equals(key))
+				retorno = p.element().getValue();
+			
+		}
+		
+		return retorno;
+	}
+	
+	public V put(K key, V value) throws InvalidKeyException {
+		if(key == null)
+			throw new InvalidKeyException("se escribio una Key invalida");
+		
+		Iterator<Position<Entrada<K, V>>> it = m.positions().iterator();
+		Position<Entrada<K, V>> p;
+		
+		V retorno = null;
+		
+		while(it.hasNext() && retorno == null) {
+			p = it.next();
+			
+			if(p.element().getKey().equals(key)) {
+				retorno = p.element().getValue();
+				p.element().setValue(value);
+			}
+		}
+		
+		if(retorno == null)
+			m.addLast(new Entrada<K, V>(key, value));
+		
+		return retorno;
+	}
+	public V remove(K key) throws InvalidKeyException {
+		if(key == null)
+			throw new InvalidKeyException("se  inserto una Key invalida");
+		
+		Iterator<Position<Entrada<K, V>>> it = m.positions().iterator();
+		Position<Entrada<K, V>> p;
+		
+		V ret = null;
+		try {
+			while(it.hasNext() && ret == null) {
+				p = it.next();
+				
+				if(p.element().getKey().equals(key)) {
+					ret = p.element().getValue();
+					m.remove(p);
+				}
+			}
+		} catch(InvalidPositionException e) {}
+		
+		return ret;
 	}
 
-	@Override
-	public V put(K key, V value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public V remove(K key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Iterable<K> keys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+         PositionList<K> l = new ListaDE<K>();
+		
+		for(Position<Entrada<K, V>> p : m.positions())
+			l.addLast(p.element().getKey());
+		
+		return l;
+		}
 
-	@Override
 	public Iterable<V> values() {
-		// TODO Auto-generated method stub
-		return null;
+        PositionList<V> l = new ListaDE<V>();
+		
+		for(Position<Entrada<K, V>> p : m.positions())
+			l.addLast(p.element().getValue());
+		
+		return l;
+	    }
+
+	public Iterable<Entry<K,V>> entries() {
+        PositionList<Entry<K, V>> l = new ListaDE<Entry<K, V>>();
+		
+		for(Position<Entrada<K, V>> p : m.positions()){
+			l.addLast((Entry<K, V>) p.element());
+		}
+		
+		return l;
+	}
+	
+	public String toString() {
+		String s = "";
+		
+		for(Position<Entrada<K, V>> p : m.positions())
+			s += p.element().toString() + " ";
+		
+		return s;
 	}
 
-	@Override
-	public Iterable<Entry<K, V>> entries() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-    
 }
