@@ -1,4 +1,4 @@
-package TrabajoPracticoNro5.TrabajoPracticoNro5.src;
+
 public interface Entry<K, V> {
 	/**
 	 * Retorna la clave asociada al valor

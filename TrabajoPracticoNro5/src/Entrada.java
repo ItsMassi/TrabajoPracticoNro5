@@ -1,4 +1,4 @@
-package TrabajoPracticoNro5.TrabajoPracticoNro5.src;
+
 public class Entrada<K, V> implements Entry<K,V>{
 	 private K clave;
 	 private V valor;

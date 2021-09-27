@@ -7,7 +7,7 @@
  *  @version: 2.0
  */
 
-package TDAMapeo;
+
 
 import static org.junit.Assert.*;
 

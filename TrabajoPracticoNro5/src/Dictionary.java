@@ -1,4 +1,4 @@
-package TrabajoPracticoNro5.TrabajoPracticoNro5.src;
+
 public interface Dictionary<K,V>
 {
 	/**
