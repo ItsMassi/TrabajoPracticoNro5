@@ -1,6 +1,12 @@
 package Excepciones;
 
-@SuppressWarnings("serial")
 public class BoundaryViolationException extends Exception{
-	public BoundaryViolationException(String msg){super(msg);}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public BoundaryViolationException(String msg) {
+		super(msg);
+	}
 }

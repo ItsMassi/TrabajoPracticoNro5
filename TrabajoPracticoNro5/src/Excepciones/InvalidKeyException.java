@@ -1,12 +1,12 @@
 package Excepciones;
 
-public class EmptyListException extends Exception{
+public class InvalidKeyException extends Exception{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EmptyListException (String msg) {
+	public InvalidKeyException(String msg) {
 		super(msg);
 	}
 }

@@ -1,6 +1,12 @@
 package Excepciones;
 
-@SuppressWarnings("serial")
 public class InvalidPositionException extends Exception{
-	public InvalidPositionException(String msg){super(msg);}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InvalidPositionException(String msg) {
+		super(msg);
+	}
 }
