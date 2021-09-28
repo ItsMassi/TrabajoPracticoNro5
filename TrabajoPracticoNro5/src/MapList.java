@@ -9,30 +9,7 @@ import TDALista.Position;
 import TDALista.PositionList;
 
 public class MapeoConLista<K,V> implements Map<K,V> {
-	private class Entrada<K,V> implements Entry<K,V> {
-		private K key;
-		private V value;
-		
-		public Entrada(K k, V v) {
-			key = k;
-			value = v;
-		}
-		public K getKey() {
-			return key;
-		}
-		public void setKey(K k) {
-			key = k;
-		}
-		public V getValue() {
-			return value;
-		}
-		public void setValue(V v) {
-			value = v;  
-		}
-		public String toString() {
-			return "(" + key.toString() + ", " + value.toString() + ")";
- 		}
-	}
+	
 	
 	protected PositionList<Entrada<K, V>> m;
 
