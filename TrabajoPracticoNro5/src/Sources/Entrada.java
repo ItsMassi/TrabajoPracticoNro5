@@ -5,7 +5,7 @@ public class Entrada<K, V> implements Entry<K,V>{
 	 private V valor;
 	 
 	 //constructor
-	 Entrada(K clave, V valor){this.clave = clave; this.valor = valor;}
+	 public Entrada(K clave, V valor){this.clave = clave; this.valor = valor;}
 
 	//getters and setters
 	public K getKey() {return clave;}
