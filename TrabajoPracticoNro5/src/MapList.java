@@ -1,19 +1,16 @@
-package TDAMapeo;
 
 import java.util.Iterator;
 
 import Excepciones.InvalidKeyException;
 import Excepciones.InvalidPositionException;
-import TDALista.ListaDE;
-import TDALista.Position;
-import TDALista.PositionList;
 
-public class MapeoConLista<K,V> implements Map<K,V> {
+
+public class MapList<K,V> implements Map<K,V> {
 	
 	
 	protected PositionList<Entrada<K, V>> m;
 
-	public MapeoConLista() {
+	public MapList() {
 		m = new ListaDE<Entrada<K,V>>();
 	}
 	

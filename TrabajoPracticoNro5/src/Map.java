@@ -1,3 +1,4 @@
+import Excepciones.InvalidKeyException;
 
 public interface Map<K,V> {
 	/**
@@ -16,23 +17,26 @@ public interface Map<K,V> {
 	 * Le permite recuperar el valor asociado a la clave, sino retorna null
 	 * @param key
 	 * @return Valor asociado a K
+	 * @throws InvalidKeyException 
 	 */
-	public V get(K key);
+	public V get(K key) throws InvalidKeyException;
 	
 	/**
 	 * Si M no almacena un K igual lo guarda y retorna null. Si existe un elemento de igual K cambia los valores de V y retorna el viejo V.
 	 * @param key
 	 * @param value
 	 * @return Posible valor del viejo valor asociado a K
+	 * @throws InvalidKeyException 
 	 */
-	public V put(K key, V value);
+	public V put(K key, V value) throws InvalidKeyException;
 	
 	/**
 	 * Remueve el elemento con clave K y retorna su valor, si no existe retorna null.
 	 * @param key
 	 * @return Posible valor asociado a la clave k
+	 * @throws InvalidKeyException 
 	 */
-	public V remove(K key);
+	public V remove(K key) throws InvalidKeyException;
 	
 	/**
 	 * Retorna una coleccion iterable de las claves de M.

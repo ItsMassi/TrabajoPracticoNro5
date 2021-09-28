@@ -2,5 +2,7 @@
 
 public interface Position<E> {
 	
-	public E elemento();
+	//public E elemento();
+
+	E element();
 }
