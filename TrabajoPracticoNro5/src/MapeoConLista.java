@@ -1,10 +1,10 @@
 
 
-public class MapList<K,V> implements Map<K,V> {
+public class MapeoConLista<K,V> implements Map<K,V> {
 	
 	protected PositionList<Entrada<K,V>> m;
 	
-	public MapList() {
+	public MapeoConLista() {
 		
 	}
 	
