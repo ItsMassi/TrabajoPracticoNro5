@@ -1,12 +1,12 @@
 package Excepciones;
 
-public class EmptyListException extends Exception{
+public class ClassCastException extends Exception{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EmptyListException (String msg) {
+	public ClassCastException (String msg) {
 		super(msg);
 	}
 }
