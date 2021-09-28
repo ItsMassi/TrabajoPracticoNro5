@@ -1,6 +1,7 @@
 
 import Excepciones.InvalidPositionException;
 import Excepciones.InvalidKeyException;
+
 public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	protected int tamaño;
 	protected int maximo;
