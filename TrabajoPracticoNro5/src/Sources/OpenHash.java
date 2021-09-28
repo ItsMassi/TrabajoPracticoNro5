@@ -1,29 +1,30 @@
+package Sources;
 
-import Excepciones.InvalidPositionException;
 import Excepciones.InvalidKeyException;
+import TDALista.ListaDE;
+import TDALista.PositionList;
 
-public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
-	protected int tamaño;
-	protected int maximo;
+public class OpenHash<K,V> implements Map<K,V> {
+	protected int n;//tamaño
+	protected int N = 1013;
 	protected MapeoConLista<K,V>[] buckets;
 	
-	@SuppressWarnings("unchecked")
-	public MapeoConHashAbierto() {
-		tamaño=0;
-		maximo=13;
-		buckets = (MapeoConLista<K,V>[]) new MapeoConLista[13];
-		for(int i=0; i<maximo; i++) {
+	public OpenHash() {
+		n=0;
+		buckets = (MapeoConLista<K,V>[]) new MapeoConLista[N];
+		for(int i=0; i < N; i++) {
 		  buckets[i]= new MapeoConLista<K,V>();
 		}
 	}
+	
 	private int hash(K key) {
-		return (key.hashCode() % maximo);
+		return (key.hashCode() % N);
 	}
 	
 	private void rehash() throws InvalidKeyException{
-		maximo = siguientePrimo(2*maximo);
-		MapeoConLista<K,V>[] mapeoNuevo =(MapeoConLista<K,V>[]) new MapeoConLista[maximo];
-		for(int i=0; i<maximo;i++) {
+		N = nextPrimo(2*N);
+		MapeoConLista<K,V>[] mapeoNuevo =(MapeoConLista<K,V>[]) new MapeoConLista[N];
+		for(int i=0; i < N ;i++) {
 			mapeoNuevo[i]=new MapeoConLista<K,V>();
 		}
 		for(Entry<K,V> e : this.entries()) {
@@ -32,12 +33,15 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 		buckets=mapeoNuevo;
 	}
 	
-	private int siguientePrimo(int x) {
-		if(maximo<=1) {
+	private int nextPrimo(int x) {
+		if(N <= 1) {
 			return 2;
 		}
-		int retorno=maximo;
+		
+		int retorno = N;
+		
 		boolean encontre =false;
+		
 		while(!encontre) {
 			retorno++;
 			if(esPrimo(retorno))
@@ -68,12 +72,12 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	
 	public int size() {
 		
-		return tamaño;
+		return n;
 	}
 	
 	public boolean isEmpty() {
 		
-		return (tamaño==0);
+		return (n == 0);
 	}
 
 	public V get(K key) throws InvalidKeyException {
@@ -89,9 +93,9 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 		}
 		V retorno =buckets[hash(key)].put(key, value);
 		if(retorno==null) {
-			tamaño++;
+			n++;
 		}
-		if((float)tamaño / maximo>=0.9f) {
+		if((float) n/ N >= 0.9f) {
 			rehash();
 		}
 		return retorno;
@@ -103,13 +107,13 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 		}
 		V retorno= buckets[hash(key)].remove(key);
 		if(retorno!=null) {
-		  tamaño--;
+		  n--;
 		}
 		return retorno;
 	}
 	
 	public Iterable<K> keys() {
-		PositionList<K> l =  new ListaDoblementeEnlazada<K>();
+		PositionList<K> l =  new ListaDE<K>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(K e : buckets[i].keys())
@@ -122,7 +126,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	}
 	
 	public Iterable<V> values() {
-		PositionList<V> l = new ListaDoblementeEnlazada<V>();
+		PositionList<V> l = new ListaDE<V>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(V e : buckets[i].values())
@@ -133,7 +137,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	}
 	
 	public Iterable<Entry<K, V>> entries() {
-		PositionList<Entry<K,V>> l = new ListaDoblementeEnlazada<Entry<K,V>>();
+		PositionList<Entry<K,V>> l = new ListaDE<Entry<K,V>>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(Entry<K,V> e : buckets[i].entries())
@@ -142,6 +146,4 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 		
 		return l;
 	}
-	
-	
 }
