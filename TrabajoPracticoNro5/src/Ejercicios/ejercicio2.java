@@ -1,5 +1,4 @@
 package Ejercicios;
-import java.util.Iterator;
 
 import Excepciones.InvalidKeyException;
 import Sources.*;
@@ -24,7 +23,7 @@ public class ejercicio2{
 	 * @param m2
 	 * @return lista de elementos con misma clave pero distinto valor
 	 */
-	public ListaDE<Entry<Integer,Integer>> incisioA(Map<Integer,Integer> m1, Map<Integer,Integer> m2){
+	public PositionList<Entry<Integer,Integer>> incisioA(Map<Integer,Integer> m1, Map<Integer,Integer> m2){
 		//crea iterable de m1
 		ListaDE<Entry<Integer,Integer>> list = new ListaDE<Entry<Integer,Integer>>();
 		Integer valorM2 = null;
@@ -56,7 +55,7 @@ public class ejercicio2{
 	public static void main(String[] args) {
 		Map<Integer,Integer> m1 = new MapeoConLista<Integer,Integer>();
 		Map<Integer,Integer> m2 = new MapeoConLista<Integer,Integer>();
-		ListaDE<Entry<Integer,Integer>> resultado = new ListaDE<Entry<Integer,Integer>>();
+		PositionList<Entry<Integer,Integer>> resultado = new ListaDE<Entry<Integer,Integer>>();
 		ejercicio2 k = new ejercicio2();
 		try {
 			m1.put(123, 0);
@@ -79,7 +78,3 @@ public class ejercicio2{
 	}
 
 }
-
-
-/*     NOTAS
- * no se a que se refiere con una lista con celda de encabezamiento nula*/
