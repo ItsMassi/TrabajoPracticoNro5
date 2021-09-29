@@ -1,5 +1,7 @@
 package Sources;
 
+import Excepciones.NonExistentEntryException;
+
 public interface Dictionary<K,V>
 {
 	/**
@@ -44,7 +46,7 @@ public interface Dictionary<K,V>
 	 * @return Entrada removida.
 	 * @throws InvalidEntryException si la entrada no est� en el diccionario o es inv�lida.
 	 */
-	public Entry<K,V> remove(Entry<K,V> e) throws InvalidEntryException;
+	public Entry<K,V> remove(Entry<K,V> e) throws InvalidEntryException, NonExistentEntryException;
 	
 	/**
 	 * Retorna una colecci�n iterable con todas las entradas en el diccionario.
