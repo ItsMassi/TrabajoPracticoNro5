@@ -1,6 +1,5 @@
 package Sources;
 
-import Excepciones.InvalidPositionException;
 import Excepciones.InvalidKeyException;
 
 public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
@@ -23,6 +22,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	
 	private void rehash() throws InvalidKeyException{
 		maximo = siguientePrimo(2*maximo);
+		@SuppressWarnings("unchecked")
 		MapeoConLista<K,V>[] mapeoNuevo =(MapeoConLista<K,V>[]) new MapeoConLista[maximo];
 		for(int i=0; i<maximo;i++) {
 			mapeoNuevo[i]=new MapeoConLista<K,V>();
@@ -110,7 +110,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	}
 	
 	public Iterable<K> keys() {
-		PositionList<K> l =  new ListaDoblementeEnlazada<K>();
+		PositionList<K> l =  new ListaDE<K>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(K e : buckets[i].keys())
@@ -123,7 +123,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	}
 	
 	public Iterable<V> values() {
-		PositionList<V> l = new ListaDoblementeEnlazada<V>();
+		PositionList<V> l = new ListaDE<V>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(V e : buckets[i].values())
@@ -134,7 +134,7 @@ public class MapeoConHashAbierto<K, V>  implements Map<K,V>{
 	}
 	
 	public Iterable<Entry<K, V>> entries() {
-		PositionList<Entry<K,V>> l = new ListaDoblementeEnlazada<Entry<K,V>>();
+		PositionList<Entry<K,V>> l = new ListaDE<Entry<K,V>>();
 		for(int i = 0; i < buckets.length; i++) {
 			if(!buckets[i].isEmpty())
 				for(Entry<K,V> e : buckets[i].entries())

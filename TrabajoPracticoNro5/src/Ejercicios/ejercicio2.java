@@ -17,7 +17,7 @@ public class ejercicio2{
 	/**
 	 * Escriba un método que reciba los dos mapeos M1 y M2 y devuelva una lista L con aquellos 
 	 * elementos  E1  de  M1  y  E2  de  M2  que  coincidan  en  el  valor  del  dominio,  pero  tengan  una 
-	 * imagen  diferente. Por ejemplo, si E1= (LU: 29303, Nota: 8) pertenece a M1 y 
+	 * imagen  diferente. Por ejemplo, si E1= (LU: 29303, Nota: 8) pertenece a M1 y k
 	 * E2= (LU:29303, Nota: 7) pertenece a M2, entonces E1 y E2 serán puestos en L. 
 	 * @param m1
 	 * @param m2
