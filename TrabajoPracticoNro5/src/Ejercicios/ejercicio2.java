@@ -54,7 +54,28 @@ public class ejercicio2{
 	}
 	
 	public static void main(String[] args) {
-		//aca iria el tester pero no se que hacer xDDDDDDDDDDDD
+		Map<Integer,Integer> m1 = new MapeoConLista<Integer,Integer>();
+		Map<Integer,Integer> m2 = new MapeoConLista<Integer,Integer>();
+		ListaDE<Entry<Integer,Integer>> resultado = new ListaDE<Entry<Integer,Integer>>();
+		ejercicio2 k = new ejercicio2();
+		try {
+			m1.put(123, 0);
+			m1.put(456, 5);
+			m1.put(789, 10);
+			m1.put(1110, 9);
+			m2.put(123, 1);
+			m2.put(456, 5);
+			m2.put(789, 100);
+			
+			resultado = k.incisioA(m1, m2);
+			Iterable<Position<Entry<Integer, Integer>>> it = resultado.positions();
+			for(Position<Entry<Integer, Integer>> element : it) {
+				System.out.println("<"+element.element().getKey()+","+element.element().getValue()+">");
+			}
+			
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
