@@ -4,8 +4,8 @@ import Sources.Position;
 import Sources.PositionList;
 
 public class Alumno{
-	String legajo, nombre;
-	PositionList<ExamenFinal> finales;
+	private String legajo, nombre;
+	private PositionList<ExamenFinal> finales;
 	
 	Alumno(String legajo, String nombre, PositionList<ExamenFinal> finales){
 		this.legajo = legajo;
@@ -28,6 +28,7 @@ public class Alumno{
 		//si no existe, agrega el ExamenFinal al final de la lista
 		finales.addLast(e);
 	}
+	//hacerlos de forma estructurada
 	public Integer getNota(String materia) {
 		Iterable<Position<ExamenFinal>> examenes = finales.positions();
 		//si ya existe esa materia retorna la nota

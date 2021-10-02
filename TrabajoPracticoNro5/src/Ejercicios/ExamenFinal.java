@@ -3,7 +3,7 @@ package Ejercicios;
 public class ExamenFinal{
 	String materia;
 	int nota;
-	
+	//add fecha d,m,a
 	ExamenFinal(String m, int n){
 		materia = m;
 		nota=n;
