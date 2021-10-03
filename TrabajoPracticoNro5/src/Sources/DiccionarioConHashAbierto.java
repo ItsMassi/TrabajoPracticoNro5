@@ -133,6 +133,8 @@ public class DiccionarioConHashAbierto<K,V> implements Dictionary<K,V>{
 		return retorno;
 	}
 
+	
+	//no se como implementar esto xDDDDDDDDDDDDD
 	@Override
 	public Iterable<Entry<K, V>> entries() {
 		return null;
