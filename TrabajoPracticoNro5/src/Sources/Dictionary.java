@@ -37,8 +37,9 @@ public interface Dictionary<K,V>
 	 * @param key Clave de la entrada a crear.
 	 * @return value Valor de la entrada a crear.
 	 * @throws InvalidKeyException si la clave pasada por par�metro es inv�lida.
+	 * @throws Excepciones.InvalidKeyException 
 	 */
-	public Entry<K,V> insert(K key, V value) throws InvalidKeyException;
+	public Entry<K,V> insert(K key, V value) throws InvalidKeyException, Excepciones.InvalidKeyException;
 	
 	/**
 	 * Remueve una entrada dada en el diccionario y devuelve la entrada removida.

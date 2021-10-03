@@ -1,14 +1,13 @@
 package Sources;
 
 import Excepciones.InvalidKeyException;
-import TDALista.ListaDE;
-import TDALista.PositionList;
 
 public class OpenHash<K,V> implements Map<K,V> {
 	protected int n;//tamaño
 	protected int N = 1013;
 	protected MapeoConLista<K,V>[] buckets;
 	
+	@SuppressWarnings("unchecked")
 	public OpenHash() {
 		n=0;
 		buckets = (MapeoConLista<K,V>[]) new MapeoConLista[N];
@@ -23,6 +22,7 @@ public class OpenHash<K,V> implements Map<K,V> {
 	
 	private void rehash() throws InvalidKeyException{
 		N = nextPrimo(2*N);
+		@SuppressWarnings("unchecked")
 		MapeoConLista<K,V>[] mapeoNuevo =(MapeoConLista<K,V>[]) new MapeoConLista[N];
 		for(int i=0; i < N ;i++) {
 			mapeoNuevo[i]=new MapeoConLista<K,V>();
