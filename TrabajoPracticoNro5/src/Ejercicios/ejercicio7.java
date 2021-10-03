@@ -47,7 +47,7 @@ public class ejercicio7<K,V> {
 			m1.put("Benja", 5);
 			System.out.println("size m1  "+m1.size());
 			//m1.put("Sergiogod", 6);
-			//System.out.println("size m1  "+m1.size());
+			//System.out.println("size m1  "+d1.size());
 		} catch (InvalidKeyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,17 +57,17 @@ public class ejercicio7<K,V> {
 		
 		try {
 			m2.put("Daniel", 1);
-			System.out.println("size m1  "+m1.size());
+			System.out.println("size m1  "+m2.size());
 			m2.put("Bruno", 2);
-			System.out.println("size m1  "+m1.size());
+			System.out.println("size m1  "+m2.size());
 			m2.put("Gino", 3);
-			System.out.println("size m1  "+m1.size());
+			System.out.println("size m1  "+m2.size());
 			m2.put("Nico", 4);
-			System.out.println("size m1  "+m1.size());
+			System.out.println("size m1  "+m2.size());
 			m2.put("Benja", 5);
-			System.out.println("size m1  "+m1.size());
+			System.out.println("size m1  "+m2.size());
 			//m2.put("Sergiogod", 6);
-			//System.out.println("size m1  "+m1.size());
+			//System.out.println("size m1  "+d1.size());
 
 		} catch (InvalidKeyException e) {
 			// TODO Auto-generated catch block

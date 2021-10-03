@@ -71,7 +71,7 @@ public class DiccionarioConLista<K,V> implements Dictionary<K, V> {
 			try {
 				Position<Entry<K,V>> recorro;
 				for(recorro = D.first() ; recorro != D.last() ; D.next(recorro)) {
-					l.addLast(recorro.element());
+					l.addFirst(recorro.element());
 				}
 				l.addLast(recorro.element());
 			}
