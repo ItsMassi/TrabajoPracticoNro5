@@ -28,7 +28,8 @@ public class ejercicio7<K,V> {
 	}
 	/*entonces T(n)= c1 + o(n) o(n) + (n*(o(1)+O(m))+O(1))
 	 *         T(n)= (n*o(1)+n*O(m)+O(1))
-	 *         T(n)= n*O(m)*/
+	 *         T(n)= n*O(m)
+	 **/
 	
 	public static void main(String[] args) {
 		ejercicio7<String,Integer> ej =  new ejercicio7<String,Integer>();

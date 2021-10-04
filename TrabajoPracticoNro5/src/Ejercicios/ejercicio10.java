@@ -1,20 +1,26 @@
 package Ejercicios;
 import Excepciones.InvalidKeyException;
+import Excepciones.NonExistentEntryException;
 import Sources.*;
 public class ejercicio10<K,V> {
 	public ejercicio10() {super();}
 	
-	public Dictionary<K,V> acomodar(Dictionary<K,V> d){
+	public Dictionary<K,V> acomodar(Dictionary<K,V> d) throws Sources.InvalidKeyException, InvalidKeyException, InvalidEntryException, NonExistentEntryException{
 		System.out.println("entro");
 		Dictionary<K,V> retorno = new DiccionarioConLista<K,V>();
 		Iterable<Entry<K, V>> iterable = d.entries();
 		Entrada<K,V> entrada = null;
 		for(Entry<K, V> e : iterable) {
 			entrada = (Entrada<K, V>) e;
-			System.out.println(entrada.toString());
+			if(retorno.find(e.getKey())==null) {
+				retorno.insert(e.getKey(), e.getValue());
+			}else {
+				retorno.remove(retorno.find(e.getKey()));
+				retorno.insert(e.getKey(), e.getValue());
+			}
 
 		}
-		return null;
+		return retorno;
 		
 	}
 	public static void main(String[] args) {
@@ -41,7 +47,7 @@ public class ejercicio10<K,V> {
 			for(Entry<String, Integer> e : iterable) {
 				System.out.println(e.toString());
 			}
-		} catch ( Sources.InvalidKeyException | InvalidKeyException e) {
+		} catch ( Sources.InvalidKeyException | InvalidKeyException | InvalidEntryException | NonExistentEntryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

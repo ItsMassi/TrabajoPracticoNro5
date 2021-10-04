@@ -65,21 +65,6 @@ public class DiccionarioConLista<K,V> implements Dictionary<K, V> {
 	}
 
 	@Override
-	public Iterable<Entry<K, V>> entries() {
-		PositionList<Entry<K,V>> l = new ListaDE<Entry<K,V>>();
-		if(!isEmpty()) {
-			try {
-				Position<Entry<K,V>> recorro;
-				for(recorro = D.first() ; recorro != D.last() ; D.next(recorro)) {
-					l.addLast(recorro.element());
-				}
-				l.addLast(recorro.element());
-			}
-			catch(InvalidPositionException | BoundaryViolationException | EmptyListException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+	public Iterable<Entry<K, V>> entries() {return D;}
 
 }

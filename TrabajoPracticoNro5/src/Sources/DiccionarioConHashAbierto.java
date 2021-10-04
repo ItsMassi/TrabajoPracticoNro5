@@ -11,7 +11,7 @@ public class DiccionarioConHashAbierto<K,V> implements Dictionary<K,V>{
 	public DiccionarioConHashAbierto() {
 		tamano = 0;
 		maximo = 13;
-		buckets =(DiccionarioConLista<K,V>[]) new DiccionarioConLista[13];
+		buckets =(DiccionarioConLista<K,V>[]) new DiccionarioConLista[maximo];
 		for(int i=0; i<maximo; i++) {
 			buckets[i]= new DiccionarioConLista<K,V>();
 		}
